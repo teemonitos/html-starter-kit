@@ -11,5 +11,13 @@
   "bugs": {
     "url": "https://github.com/teemonitos/html-starter-kit/issues"
   },
-  "homepage": "https://github.com/teemonitos/html-starter-kit#readme"
+  "homepage": "https://github.com/teemonitos/html-starter-kit#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.9",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
+    "yargs": "^17.4.0"
+  }
 }
