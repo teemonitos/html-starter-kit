@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teemonitos/html-starter-kit.git"
+  },
+  "keywords": [],
+  "author": "Nikolay Synelnykov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teemonitos/html-starter-kit/issues"
+  },
+  "homepage": "https://github.com/teemonitos/html-starter-kit#readme"
+}
