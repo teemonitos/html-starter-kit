@@ -17,6 +17,8 @@ const html = () => {
   .pipe(bSync.stream());
 };
 
+const style = () => {};
+
 const watcher = () => {
   watch('./src/**/*.html', series(html));
 };
@@ -40,6 +42,7 @@ exports.clean = clean;
 exports.default = series(
   clean,
   html,
+  style,
   parallel(
     watcher,
     server
