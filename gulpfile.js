@@ -1,6 +1,10 @@
 const { src, dest, parallel, series, watch } = require('gulp');
 const gulpIF = require('gulp-if');
 const htmlmin = require('gulp-htmlmin');
+const scss = require('gulp-sass')(require('sass'));
+const autoprefix = require('gulp-autoprefixer');
+const sourcemap = require('gulp-sourcemaps');
+const csso = require('gulp-csso');
 const bSync = require('browser-sync');
 const argv = require('yargs').argv;
 const del = require('del');
@@ -17,10 +21,22 @@ const html = () => {
   .pipe(bSync.stream());
 };
 
-const style = () => {};
+const style = () => {
+  return src('./src/sass/*.scss')
+  .pipe(gulpIF(isDev, sourcemap.init()))
+  .pipe(gulpIF(isProd, autoprefix()))
+  .pipe(scss().on('error', scss.logError))
+  .pipe(gulpIF(isProd, csso({
+    forceMediaMerge: true
+  })))
+  .pipe(gulpIF(isDev, sourcemap.write()))
+  .pipe(dest('./dist/'))
+  .pipe(bSync.stream());
+};
 
 const watcher = () => {
   watch('./src/**/*.html', series(html));
+  watch('./src/sass/**/*.scss', series(style));
 };
 
 const server = () => {
